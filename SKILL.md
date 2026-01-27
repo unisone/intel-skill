@@ -38,6 +38,7 @@ Parse the user's input: `/intel [MODE] [TOPIC]`
 | `pricing` | Research pricing strategies |
 | `trends` | Analyze direction and velocity |
 | `pain` | Find top frustrations |
+| `validate` | Quick idea validation (gaps + competitors + pain combined) |
 | `full` | Complete report (all modes) |
 
 **If no mode specified**, default to `full`.
@@ -114,6 +115,19 @@ Search 5: {TOPIC} broken buggy unreliable
 Search 6: {TOPIC} complaints issues 2026
 ```
 
+**VALIDATE MODE** — Quick idea validation (run in sequence):
+```
+# Pain check
+Search 1: {TOPIC} frustrating problem site:reddit.com
+Search 2: {TOPIC} "I wish" OR "would pay for" site:reddit.com
+# Competition check  
+Search 3: {TOPIC} vs alternatives comparison
+Search 4: best {TOPIC} tools 2026
+# Gap check
+Search 5: {TOPIC} missing features gaps complaints
+Search 6: {TOPIC} "doesn't exist" OR "no good" site:reddit.com
+```
+
 **FULL MODE** — Run 2-3 searches from EACH mode above.
 
 ---
@@ -176,9 +190,30 @@ For each result, extract:
 
 {MODE-SPECIFIC SECTION — see below}
 
-### Limitations
-- [Any data gaps or caveats]
-- [Topics with sparse coverage]
+### Strategic Implications
+
+**If building in this space:**
+- [Specific advice for founders/builders]
+
+**If investing/evaluating:**
+- [Specific advice for investors/analysts]
+
+**Contrarian take:**
+- [What the data might be missing or getting wrong]
+
+### Confidence Breakdown
+
+| Factor | Score | Reasoning |
+|--------|-------|-----------|
+| Source diversity | {1-10} | {n} independent sources |
+| Data recency | {1-10} | {%} from last 90 days |
+| Signal strength | {1-10} | {n} findings in 3+ sources |
+| **Overall** | **{1-10}** | |
+
+### Limitations & Blind Spots
+- [Data gaps — what's NOT represented]
+- [Bias warnings — who's overrepresented]
+- [Recency issues — old data flagged]
 
 ---
 📊 /intel {MODE} complete
@@ -274,6 +309,42 @@ Want deeper analysis? Ask about any finding.
 | 1 | [Pain] | {n} mentions | High/Med/Low |
 | 2 | [Pain] | {n} mentions | High/Med/Low |
 | 3 | [Pain] | {n} mentions | High/Med/Low |
+```
+
+### VALIDATE Mode Output
+Quick idea validation — combines gaps, competitors, and pain into a decision framework.
+```markdown
+### Idea Validation: {TOPIC}
+
+#### 1. Is There a Real Problem? 
+**Verdict:** {YES/MAYBE/NO}
+- Pain points found: {n}
+- Top pain: [description] — "[quote]"
+- Severity: {High/Med/Low}
+
+#### 2. Are There Existing Solutions?
+**Verdict:** {CROWDED/SOME/EMPTY}
+- Competitors found: {n}
+- Top players: [list]
+- User satisfaction: {High/Med/Low}
+
+#### 3. Is There Room for You?
+**Verdict:** {YES/MAYBE/NO}
+- Gaps identified: {n}
+- Biggest gap: [description]
+- Differentiation opportunity: [specific angle]
+
+### Overall Validation Score
+
+| Criteria | Score | Notes |
+|----------|-------|-------|
+| Problem exists | {1-10} | |
+| Market not saturated | {1-10} | |
+| Clear differentiation | {1-10} | |
+| **BUILD/DONT BUILD** | **{verdict}** | |
+
+### Recommendation
+[2-3 sentences: Should they build this? Why or why not? What angle?]
 
 **Current Workarounds:** 
 - [Pain 1]: People do [workaround]
