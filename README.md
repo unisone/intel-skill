@@ -1,71 +1,85 @@
 # /intel
 
-> Market intelligence in seconds. For builders who need business decisions, not just information.
+[![GitHub release](https://img.shields.io/github/v/release/unisone/intel-skill?style=flat-square)](https://github.com/unisone/intel-skill/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-skill-blueviolet?style=flat-square)](https://claude.ai/code)
+[![skills.sh](https://img.shields.io/badge/skills.sh-compatible-green?style=flat-square)](https://skills.sh)
 
-While `/last30days` helps you find **prompts that work**, `/intel` helps you find **products to build**.
+> **Market intelligence in seconds.** For builders who need business decisions, not just information.
 
-## What is this?
+<p align="center">
+  <img src="assets/demo.gif" alt="intel demo" width="600">
+</p>
 
-A Claude Code skill that turns market research from hours into seconds. Get actionable intelligence on gaps, competitors, sentiment, pricing, trends, and pain points — all with evidence and sources.
+---
 
-## Installation
+## ⚡ Quick Install
 
 ```bash
-# Clone to your Claude skills directory
-git clone https://github.com/unisone/intel-skill.git ~/.claude/skills/intel
+npx skills add unisone/intel-skill
 ```
 
-No API keys required. Uses Claude Code's built-in WebSearch.
+**No API keys required.** Uses Claude Code's built-in WebSearch.
 
-## Commands
+---
 
-| Command | What it does |
-|---------|--------------|
+## 🎯 What is /intel?
+
+A Claude Code skill that turns market research from **hours into seconds**.
+
+While `/last30days` helps you find prompts that work, **`/intel` helps you find products to build.**
+
+Get actionable intelligence on:
+- 🔍 **Gaps** — Unmet needs and opportunities
+- 🏢 **Competitors** — Market landscape mapping
+- 💬 **Sentiment** — What people love and hate
+- 💰 **Pricing** — Strategy and positioning
+- 📈 **Trends** — Direction and velocity
+- 😤 **Pain** — Top frustrations worth solving
+- ✅ **Validate** — Quick idea go/no-go
+
+---
+
+## 📋 Commands
+
+| Command | Purpose |
+|---------|---------|
 | `/intel gaps [topic]` | Find market gaps & unmet needs |
 | `/intel competitors [product]` | Map competitive landscape |
-| `/intel sentiment [topic]` | Quantify what people love/hate |
+| `/intel sentiment [topic]` | Quantify love/hate ratio |
 | `/intel pricing [category]` | Research pricing strategies |
 | `/intel trends [topic]` | Analyze direction & velocity |
 | `/intel pain [category]` | Find top frustrations |
+| `/intel validate [idea]` | Quick idea validation (BUILD/DON'T BUILD) |
 | `/intel full [topic]` | Complete market intelligence |
 
-## Examples
+---
+
+## 🚀 Examples
+
+### Validate an Idea (New!)
+```
+/intel validate "AI-powered CRM for freelancers"
+```
+**Returns:** Problem exists? (YES/NO) → Competition level → Differentiation opportunity → **BUILD/DON'T BUILD** verdict
 
 ### Find Market Gaps
 ```
 /intel gaps "AI video editing"
 ```
-**Returns:** Ranked unmet needs with demand signals (mentions, upvotes, "would pay" quotes).
+**Returns:** Ranked unmet needs with demand signals, quotes, and strategic implications.
 
 ### Analyze Competitors
 ```
 /intel competitors Notion
 ```
-**Returns:** Competitive matrix with positioning, pricing, strengths, weaknesses.
+**Returns:** Competitive matrix with positioning, pricing, sentiment, and positioning gaps.
 
 ### Check Sentiment
 ```
 /intel sentiment "Claude Code"
 ```
-**Returns:** Score (1-10), positive/negative breakdown, trend direction.
-
-### Research Pricing
-```
-/intel pricing "email marketing SaaS"
-```
-**Returns:** Price tiers, models, what justifies premium, mistakes to avoid.
-
-### Spot Trends
-```
-/intel trends "no-code tools"
-```
-**Returns:** Direction (📈/📊/📉), velocity, inflection points, 6-month forecast.
-
-### Find Pain Points
-```
-/intel pain "project management"
-```
-**Returns:** Ranked frustrations with severity, frequency, willingness to pay.
+**Returns:** Score (1-10), most loved/hated features, trend direction.
 
 ### Full Report
 ```
@@ -73,62 +87,79 @@ No API keys required. Uses Claude Code's built-in WebSearch.
 ```
 **Returns:** Complete market intelligence combining all modes.
 
-## Output Format
+---
+
+## 📊 Output Format
 
 Every `/intel` response includes:
 
-- **TL;DR** — One paragraph executive summary
-- **Key Findings** — 3-5 insights with evidence and sources
-- **Data Points** — Quantified metrics in a table
-- **Mode-specific analysis** — Gaps, competitors, sentiment, etc.
-- **Confidence Level** — High/Medium/Low based on source quality
-- **Research Stats** — Number of sources, total engagement
+| Section | What You Get |
+|---------|--------------|
+| **TL;DR** | One-paragraph executive summary |
+| **Key Findings** | 3-5 insights with evidence and quotes |
+| **Data Summary** | Quantified metrics table |
+| **Strategic Implications** | If building / If investing / Contrarian take |
+| **Confidence Breakdown** | Source diversity, recency, signal strength |
+| **Limitations** | Data gaps, bias warnings, blind spots |
 
-## How It Works
+---
 
-1. **Parse** — Understand mode and topic from your command
-2. **Search** — Run 4-6 targeted WebSearches per mode
-3. **Extract** — Pull quotes, numbers, engagement metrics
-4. **Synthesize** — Weight sources, identify patterns, quantify
-5. **Output** — Structured intelligence with citations
+## 🧠 How It Works
 
-## Why /intel?
+```
+1. PARSE → Understand mode and topic
+2. SEARCH → Run 5-8 targeted WebSearches
+3. EXTRACT → Pull quotes, numbers, signals
+4. SYNTHESIZE → Weight sources, find patterns
+5. OUTPUT → Structured intelligence with citations
+```
 
-| Tool | Focus | Audience |
-|------|-------|----------|
-| `/last30days` | Prompts & techniques | Creators |
-| `deep-research` | Academic research | Researchers |
-| **`/intel`** | **Market intelligence** | **Builders, founders** |
+---
 
-## Philosophy
+## 📁 Examples
 
-- **Quantify everything** — "23 mentions" not "frequently mentioned"
-- **Cite sources** — Every claim links to evidence
-- **Be actionable** — Enable decisions, not just awareness
-- **Acknowledge uncertainty** — Low confidence = say so
+See the [`examples/`](examples/) folder for complete output samples:
 
-## Example Outputs
+| File | Topic |
+|------|-------|
+| [gaps-example.md](examples/gaps-example.md) | AI video editing market gaps |
+| [competitors-example.md](examples/competitors-example.md) | Notion competitive analysis |
+| [sentiment-example.md](examples/sentiment-example.md) | Claude Code sentiment |
 
-See the `examples/` folder for complete output samples:
-- [gaps-example.md](examples/gaps-example.md) — AI video editing market gaps
-- [competitors-example.md](examples/competitors-example.md) — Notion competitive analysis
-- [sentiment-example.md](examples/sentiment-example.md) — Claude Code sentiment
+---
 
-## Requirements
+## 🔧 Requirements
 
 - Claude Code (with WebSearch capability)
 - No external API keys needed
 
-## Contributing
+---
+
+## 🤝 Contributing
 
 PRs welcome! See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## License
-
-MIT — build something great.
+Ideas for contribution:
+- Additional output modes
+- Better search templates for specific industries
+- Localization for non-English markets
 
 ---
 
-**Stop guessing. Start knowing.**
+## 📜 License
 
-Built by [@alexxzay](https://twitter.com/alexxzay)
+[MIT](LICENSE) — build something great.
+
+---
+
+## 🔗 Links
+
+- **GitHub:** [github.com/unisone/intel-skill](https://github.com/unisone/intel-skill)
+- **skills.sh:** `npx skills add unisone/intel-skill`
+- **Author:** [@alexxzay](https://twitter.com/alexxzay)
+
+---
+
+<p align="center">
+  <strong>Stop guessing. Start knowing.</strong>
+</p>
