@@ -1,18 +1,23 @@
 {
   "name": "intel-skill",
   "version": "0.0.0-development",
-  "description": "Market intelligence in seconds — Claude Code skill for gaps, competitors, sentiment, pricing, trends, and pain points",
+  "description": "Market intelligence in seconds — Claude Code skill for gaps, competitors, sentiment, pricing, trends, pain points, and idea validation",
   "keywords": [
     "claude",
     "claude-code",
     "claude-skill",
+    "skills",
+    "agent-skill",
     "market-research",
     "competitive-analysis",
     "market-intelligence",
+    "idea-validation",
     "ai",
     "startup",
     "founder",
-    "indie-hacker"
+    "indie-hacker",
+    "business-intelligence",
+    "web-search"
   ],
   "author": "Alex <hello@zaydream.com>",
   "license": "MIT",
@@ -27,12 +32,17 @@
   "files": [
     "SKILL.md",
     "README.md",
-    "LICENSE"
+    "GUIDE.md",
+    "LICENSE",
+    "examples/"
   ],
   "scripts": {
     "test": "echo \"Skill-based — no runtime tests\" && exit 0"
   },
   "release": {
     "branches": ["main"]
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
