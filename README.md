@@ -107,6 +107,13 @@ Every `/intel` response includes:
 - **Be actionable** — Enable decisions, not just awareness
 - **Acknowledge uncertainty** — Low confidence = say so
 
+## Example Outputs
+
+See the `examples/` folder for complete output samples:
+- [gaps-example.md](examples/gaps-example.md) — AI video editing market gaps
+- [competitors-example.md](examples/competitors-example.md) — Notion competitive analysis
+- [sentiment-example.md](examples/sentiment-example.md) — Claude Code sentiment
+
 ## Requirements
 
 - Claude Code (with WebSearch capability)

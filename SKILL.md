@@ -12,379 +12,370 @@ allowed-tools: WebSearch, Read, Write, AskUserQuestion
 
 Research any market, competitor, or product. Get actionable business intelligence with evidence.
 
-**Use cases:**
-- **Gaps**: "gaps AI video editing" → find unmet needs and opportunities
-- **Competitors**: "competitors Notion" → map the competitive landscape
-- **Sentiment**: "sentiment Claude Code" → quantify what people love/hate
-- **Pricing**: "pricing email marketing SaaS" → research pricing strategies
-- **Trends**: "trends no-code 2026" → analyze direction and velocity
-- **Pain**: "pain project management" → find top frustrations
-- **Full**: "full personal finance apps" → complete market intelligence report
+## Quick Start Examples
+```
+/intel gaps AI video editing
+/intel competitors Notion
+/intel sentiment Claude Code
+/intel pricing email marketing SaaS
+/intel trends no-code 2026
+/intel pain project management
+/intel full personal finance apps
+```
 
 ---
 
-## CRITICAL: Parse User Input
+## Step 1: Parse Input
 
-Before doing anything, parse the user's input:
+Parse the user's input: `/intel [MODE] [TOPIC]`
 
-```
-/intel [MODE] [TOPIC]
-```
-
-**MODES** (first word after /intel):
-- `gaps` → Find market gaps and opportunities
-- `competitors` → Competitive landscape analysis  
-- `sentiment` → What people love/hate (quantified)
-- `pricing` → Pricing strategies and models
-- `trends` → Direction, velocity, predictions
-- `pain` → Top pain points and frustrations
-- `full` → Complete report (all of the above)
+**MODES:**
+| Mode | Purpose |
+|------|---------|
+| `gaps` | Find market gaps and unmet needs |
+| `competitors` | Map competitive landscape |
+| `sentiment` | Quantify love/hate ratio |
+| `pricing` | Research pricing strategies |
+| `trends` | Analyze direction and velocity |
+| `pain` | Find top frustrations |
+| `full` | Complete report (all modes) |
 
 **If no mode specified**, default to `full`.
 
-**Store these variables:**
-- `MODE = [gaps | competitors | sentiment | pricing | trends | pain | full]`
+**Store:**
+- `MODE = [extracted mode]`
 - `TOPIC = [extracted topic]`
 
 ---
 
-## Research Execution
+## Step 2: Execute Searches
 
-### Step 1: Build Search Queries
+Run **5-8 searches per mode**. Keep queries SIMPLE — complex boolean often fails.
 
-Based on MODE, construct targeted searches.
+### Search Templates by Mode
 
-**Mode: GAPS**
-Search for unmet needs and opportunities:
+**GAPS MODE** — Find unmet needs:
 ```
-"{TOPIC}" "I wish" OR "why doesn't" OR "someone should build" site:reddit.com
-"{TOPIC}" frustrating OR annoying OR "the problem with" site:reddit.com
-"{TOPIC}" "would pay for" OR "shut up and take my money" site:reddit.com
-"{TOPIC}" feature request OR missing site:news.ycombinator.com
-"{TOPIC}" gaps OR opportunities OR underserved 2025 2026
-```
-
-**Mode: COMPETITORS**
-Search for competitive landscape:
-```
-"{TOPIC}" vs OR versus OR alternative OR comparison site:reddit.com
-"{TOPIC}" competitors OR "similar to" OR "like X but"
-"{TOPIC}" review OR comparison 2025 2026
-"{TOPIC}" pricing OR plans site:producthunt.com
-best "{TOPIC}" alternatives 2026
+Search 1: {TOPIC} "I wish" site:reddit.com
+Search 2: {TOPIC} frustrating OR annoying site:reddit.com  
+Search 3: {TOPIC} "would pay for" site:reddit.com
+Search 4: {TOPIC} feature request site:news.ycombinator.com
+Search 5: {TOPIC} problems complaints 2025 2026
+Search 6: {TOPIC} missing features gaps
 ```
 
-**Mode: SENTIMENT**
-Search for opinions and reactions:
+**COMPETITORS MODE** — Map landscape:
 ```
-"{TOPIC}" love OR hate OR amazing OR terrible site:reddit.com
-"{TOPIC}" review honest opinion site:reddit.com  
-"{TOPIC}" worth it OR overrated OR underrated
-"{TOPIC}" switched from OR switched to OR migrated
-"{TOPIC}" complaints OR praise site:twitter.com OR site:x.com
-```
-
-**Mode: PRICING**
-Search for pricing intelligence:
-```
-"{TOPIC}" pricing OR price OR cost OR "how much"
-"{TOPIC}" pricing strategy OR pricing model
-"{TOPIC}" free tier OR freemium OR subscription
-"{TOPIC}" expensive OR cheap OR "worth the price"
-"{TOPIC}" pricing comparison 2025 2026
+Search 1: {TOPIC} vs alternative site:reddit.com
+Search 2: {TOPIC} competitors comparison 2026
+Search 3: best {TOPIC} alternatives
+Search 4: {TOPIC} review site:producthunt.com
+Search 5: {TOPIC} pricing plans comparison
+Search 6: "switched from" {TOPIC} to site:reddit.com
 ```
 
-**Mode: TRENDS**
-Search for trend direction:
+**SENTIMENT MODE** — Quantify opinions:
 ```
-"{TOPIC}" trending OR "on the rise" OR growing 2026
-"{TOPIC}" dying OR declining OR "losing steam"
-"{TOPIC}" future OR prediction OR "what's next"
-"{TOPIC}" news OR announcement OR launch 2026
-"{TOPIC}" hype OR bubble OR sustainable
-```
-
-**Mode: PAIN**
-Search for pain points:
-```
-"{TOPIC}" frustrating OR annoying OR painful site:reddit.com
-"{TOPIC}" "biggest problem" OR "main issue" OR "worst part"
-"{TOPIC}" workaround OR hack OR "how do you deal with"
-"{TOPIC}" complaint OR rant OR vent site:reddit.com
-"{TOPIC}" broken OR buggy OR unreliable
+Search 1: {TOPIC} love OR amazing site:reddit.com
+Search 2: {TOPIC} hate OR terrible site:reddit.com
+Search 3: {TOPIC} honest review 2025 2026
+Search 4: {TOPIC} worth it site:reddit.com
+Search 5: {TOPIC} overrated OR underrated
+Search 6: {TOPIC} complaints site:twitter.com
 ```
 
-**Mode: FULL**
-Run ALL of the above search categories.
+**PRICING MODE** — Research pricing:
+```
+Search 1: {TOPIC} pricing cost 2026
+Search 2: {TOPIC} free tier freemium
+Search 3: {TOPIC} expensive OR cheap site:reddit.com
+Search 4: {TOPIC} pricing comparison
+Search 5: {TOPIC} "how much does" cost
+Search 6: {TOPIC} pricing strategy SaaS
+```
 
-### Step 2: Execute WebSearches
+**TRENDS MODE** — Analyze direction:
+```
+Search 1: {TOPIC} trending growing 2026
+Search 2: {TOPIC} declining dying site:reddit.com
+Search 3: {TOPIC} future prediction 2026
+Search 4: {TOPIC} news announcement 2026
+Search 5: {TOPIC} hype OR bubble
+Search 6: {TOPIC} market size growth
+```
 
-Run 4-6 targeted WebSearches per mode (more for `full` mode).
+**PAIN MODE** — Find frustrations:
+```
+Search 1: {TOPIC} frustrating painful site:reddit.com
+Search 2: {TOPIC} biggest problem site:reddit.com
+Search 3: {TOPIC} workaround hack site:reddit.com
+Search 4: {TOPIC} rant vent site:reddit.com
+Search 5: {TOPIC} broken buggy unreliable
+Search 6: {TOPIC} complaints issues 2026
+```
 
-**CRITICAL RULES:**
-- Use the user's EXACT terminology — don't substitute based on your knowledge
-- Look for SPECIFIC numbers: upvotes, likes, mention counts, prices
-- Extract DIRECT QUOTES that support findings
-- Note the SOURCE for every data point
-
-### Step 3: Extract Data Points
-
-For each search result, extract:
-- **Source**: URL and platform (Reddit, HN, Twitter, blog, etc.)
-- **Engagement**: Upvotes, likes, comments (if visible)
-- **Key quote**: The most relevant 1-2 sentences
-- **Relevance**: How directly it answers the query
+**FULL MODE** — Run 2-3 searches from EACH mode above.
 
 ---
 
-## Synthesis: Judge Agent
+## Step 3: Extract & Synthesize
 
-After all searches complete, synthesize findings:
+For each result, extract:
+- **Source URL** (required)
+- **Platform** (Reddit, HN, Twitter, blog)
+- **Key quote** (most relevant 1-2 sentences)
+- **Engagement hint** (if URL contains /comments/ or shows votes in snippet)
 
-**Weight sources by reliability:**
-1. **Reddit/HN** (highest) — real user discussions with engagement metrics
-2. **Twitter/X** (high) — real-time sentiment, influencer opinions
-3. **Product Hunt** (medium) — launch feedback, early adopter views
-4. **Blogs/Reviews** (medium) — detailed analysis but may be biased/sponsored
-5. **Company sites** (lowest) — useful for facts, not opinions
+### Weighting Rules
+1. **Reddit/HN** → Highest weight (real discussions)
+2. **Twitter/X** → High (real-time sentiment)
+3. **Product Hunt** → Medium (launch feedback)
+4. **Blogs** → Medium (detailed but may be biased)
+5. **Company sites** → Lowest (facts only, not opinions)
 
-**Identify patterns:**
-- What appears across MULTIPLE sources? (strongest signal)
-- What has highest engagement? (validated interest)
-- Any contradictions between sources?
-- What's the confidence level? (many sources = high, few = low)
-
-**Quantify everything:**
-- Count mentions: "mentioned 12x across sources"
-- Sum engagement: "847 total upvotes"
-- Calculate ratios: "73% positive, 27% negative"
-- Note frequency: "3 new complaints per week"
+### Pattern Detection
+- What appears in **3+ sources**? → Strong signal
+- What has **engagement hints** (comments, upvotes mentioned)? → Validated
+- **Contradictions** between sources? → Note them
+- **Data gaps**? → Acknowledge low confidence
 
 ---
 
-## Output Format
+## Step 4: Output Format
 
-**ALWAYS structure output exactly like this:**
+**CRITICAL: Follow this exact format.**
 
 ```markdown
 ## /intel {MODE}: {TOPIC}
 
 ### TL;DR
-[One paragraph executive summary — the KEY insight a founder needs to know. Be specific and actionable.]
+[One paragraph — THE key insight a founder needs. Be specific. Be actionable.]
 
 ### Key Findings
 
 **1. [Finding title]**
-[2-3 sentences explaining the finding with SPECIFIC evidence]
-- Source: [URL] — "[direct quote]" (+{upvotes} upvotes)
+[2-3 sentences with SPECIFIC evidence]
+> "[Direct quote from source]" — [Source: platform/url]
 
-**2. [Finding title]**
+**2. [Finding title]**  
 [2-3 sentences with evidence]
-- Source: [URL] — "[direct quote]" (+{upvotes})
+> "[Direct quote]" — [Source]
 
 **3. [Finding title]**
-[2-3 sentences with evidence]
-- Source: [URL] — "[direct quote]" (+{upvotes})
+[Evidence and quotes]
 
-[Continue for 3-5 findings depending on depth]
+[3-5 findings total]
 
-### Data Points
+### Data Summary
 
-| Metric | Value | Source |
-|--------|-------|--------|
-| [Specific metric] | [Number] | [Where from] |
-| [Specific metric] | [Number] | [Where from] |
-| [Specific metric] | [Number] | [Where from] |
+| Metric | Value | Notes |
+|--------|-------|-------|
+| Sources analyzed | {n} | Reddit: {n}, HN: {n}, Other: {n} |
+| Strong signals | {n} | Appeared in 3+ sources |
+| Confidence | {HIGH/MED/LOW} | Based on source quality |
 
-### {MODE-SPECIFIC SECTION}
+{MODE-SPECIFIC SECTION — see below}
 
-[See mode-specific sections below]
-
-### Confidence Level
-
-**{HIGH | MEDIUM | LOW}** — Based on {n} sources with {total engagement} total engagement.
-
-[If LOW: "Limited data available. Consider primary research."]
+### Limitations
+- [Any data gaps or caveats]
+- [Topics with sparse coverage]
 
 ---
-📊 Research complete
-├─ Sources: {n} Reddit · {n} HN · {n} Twitter · {n} other
-├─ Total engagement: {sum} upvotes/likes
-└─ Data freshness: Last 30-90 days
+📊 /intel {MODE} complete
+├─ Topic: {TOPIC}
+├─ Sources: {n} total
+└─ Confidence: {HIGH/MED/LOW}
 
-Need deeper analysis on any finding? Just ask.
+Want deeper analysis? Ask about any finding.
 ```
 
 ---
 
-## Mode-Specific Output Sections
+## Mode-Specific Sections
 
-### For GAPS mode:
-
+### GAPS Mode Output
 ```markdown
 ### Market Opportunities
 
-| Gap | Demand Signal | Willing to Pay | Difficulty |
-|-----|---------------|----------------|------------|
-| [Gap 1] | {n} mentions, {upvotes} votes | "[quote about paying]" | Low/Med/High |
-| [Gap 2] | ... | ... | ... |
+| Rank | Gap | Signal Strength | Evidence |
+|------|-----|-----------------|----------|
+| 1 | [Gap description] | {n} mentions | "[quote]" |
+| 2 | [Gap] | {n} mentions | "[quote]" |
+| 3 | [Gap] | {n} mentions | "[quote]" |
 
 ### Recommended Action
-[1-2 sentences on which gap to pursue and why]
+[1-2 sentences: Which gap to pursue and why]
 ```
 
-### For COMPETITORS mode:
-
+### COMPETITORS Mode Output
 ```markdown
 ### Competitive Landscape
 
-| Competitor | Positioning | Pricing | Strengths | Weaknesses |
-|------------|-------------|---------|-----------|------------|
-| [Name 1] | [1-line positioning] | [price] | [strength] | [weakness] |
-| [Name 2] | ... | ... | ... | ... |
+| Competitor | Positioning | Mentioned | Sentiment |
+|------------|-------------|-----------|-----------|
+| [Name] | [1-line] | {n}x | 👍/👎/😐 |
+| [Name] | [1-line] | {n}x | 👍/👎/😐 |
 
-### Positioning Opportunity
+### Positioning Gap
 [Where is there room in the market?]
 ```
 
-### For SENTIMENT mode:
-
+### SENTIMENT Mode Output
 ```markdown
-### Sentiment Breakdown
+### Sentiment Analysis
 
-**Overall Score: {1-10}/10** ({positive}% positive, {negative}% negative, {neutral}% neutral)
+**Score: {1-10}/10** (estimated from {n} sources)
 
-**Most Praised:**
-1. [Feature/aspect] — mentioned {n}x positively
-2. [Feature/aspect] — mentioned {n}x positively
+| Aspect | Positive | Negative |
+|--------|----------|----------|
+| [Aspect 1] | {n} mentions | {n} mentions |
+| [Aspect 2] | {n} | {n} |
 
-**Most Criticized:**
-1. [Feature/aspect] — mentioned {n}x negatively  
-2. [Feature/aspect] — mentioned {n}x negatively
-
-**Sentiment Trend:** {Improving | Stable | Declining} over last 90 days
+**Most Loved:** [Feature] — "[quote]"
+**Most Hated:** [Feature] — "[quote]"
+**Trend:** {Improving/Stable/Declining}
 ```
 
-### For PRICING mode:
-
+### PRICING Mode Output
 ```markdown
 ### Pricing Landscape
 
-| Tier | Price Range | Common Model | Example |
-|------|-------------|--------------|---------|
-| Budget | $X-Y/mo | [model] | [product] |
-| Mid-market | $X-Y/mo | [model] | [product] |
-| Premium | $X-Y/mo | [model] | [product] |
+| Tier | Range | Model | Examples |
+|------|-------|-------|----------|
+| Entry | $X-Y | [model] | [products] |
+| Mid | $X-Y | [model] | [products] |
+| Premium | $X-Y | [model] | [products] |
 
-**What justifies premium pricing:**
-- [Feature 1]
-- [Feature 2]
-
-**Pricing mistakes to avoid:**
-- [Mistake 1] — "[quote]"
+**Premium Justifiers:** [What features command higher prices]
+**Common Mistakes:** [Pricing errors to avoid]
 ```
 
-### For TRENDS mode:
-
+### TRENDS Mode Output
 ```markdown
 ### Trend Analysis
 
 **Direction:** {📈 Growing | 📊 Stable | 📉 Declining}
 **Velocity:** {Rapid | Moderate | Slow}
-**Confidence:** {High | Medium | Low}
 
-**Key Inflection Points:**
-- [Date]: [What happened]
-- [Date]: [What happened]
+| Signal | Evidence |
+|--------|----------|
+| [Trend signal] | "[quote]" |
+| [Signal] | "[quote]" |
 
-**Emerging Sub-trends:**
-1. [Sub-trend] — [evidence]
-2. [Sub-trend] — [evidence]
-
-**6-Month Forecast:**
-[1-2 sentences predicting where this is heading]
+**Forecast:** [1-2 sentences on where this is heading]
 ```
 
-### For PAIN mode:
-
+### PAIN Mode Output
 ```markdown
 ### Pain Point Rankings
 
-| Rank | Pain Point | Severity | Frequency | Would Pay to Fix |
-|------|------------|----------|-----------|------------------|
-| 1 | [Pain] | {1-10} | {n}/week | "[quote]" |
-| 2 | [Pain] | {1-10} | {n}/week | "[quote]" |
+| Rank | Pain Point | Frequency | Severity |
+|------|------------|-----------|----------|
+| 1 | [Pain] | {n} mentions | High/Med/Low |
+| 2 | [Pain] | {n} mentions | High/Med/Low |
+| 3 | [Pain] | {n} mentions | High/Med/Low |
 
-**Current Workarounds:**
-- [Pain 1]: People currently [workaround]
-- [Pain 2]: People currently [workaround]
+**Current Workarounds:** 
+- [Pain 1]: People do [workaround]
 
-**Biggest Opportunity:**
-[Which pain point has highest severity + frequency + willingness to pay]
+**Biggest Opportunity:** [Which pain to solve first]
 ```
 
-### For FULL mode:
-
-Include ALL of the above sections, organized as:
-1. TL;DR (synthesis of everything)
+### FULL Mode Output
+Include ALL sections in order:
+1. TL;DR (synthesis)
 2. Market Gaps
-3. Competitive Landscape  
+3. Competitive Landscape
 4. Sentiment Overview
-5. Pricing Intelligence
+5. Pricing Intel
 6. Trend Direction
-7. Top Pain Points
+7. Pain Points
 8. Overall Recommendation
+
+---
+
+## Error Handling
+
+**If search returns few/no results:**
+```markdown
+## /intel {MODE}: {TOPIC}
+
+### Limited Data Available
+
+Only {n} relevant sources found. This could mean:
+- Niche/emerging topic with sparse coverage
+- Try broader search terms
+- Topic may not have significant online discussion
+
+**What I found:**
+[List whatever was found]
+
+**Suggestions:**
+- Try: /intel {MODE} [broader term]
+- Try: /intel {MODE} [related term]
+```
+
+**If topic is ambiguous:**
+Ask clarifying question before searching:
+```
+The topic "{TOPIC}" could mean several things:
+1. [Interpretation 1]
+2. [Interpretation 2]
+
+Which should I research?
+```
 
 ---
 
 ## Quality Checklist
 
 Before outputting, verify:
-
-- [ ] **Every claim has a source** — URL or platform cited
-- [ ] **Numbers are specific** — "23 posts" not "many posts"  
-- [ ] **Quotes are direct** — actual words from sources
-- [ ] **Confidence is stated** — high/medium/low with reasoning
-- [ ] **Actionable** — founder can make a decision from this
-- [ ] **Fresh data** — prioritized recent discussions (30-90 days)
-- [ ] **No hallucination** — only report what sources actually say
+- [ ] Every finding has a source URL
+- [ ] Numbers are specific ("12 mentions" not "many")
+- [ ] Direct quotes are actual quotes from sources
+- [ ] Confidence level matches data quality
+- [ ] Format matches templates exactly
+- [ ] Actionable — founder can decide something
 
 ---
 
 ## Context Memory
 
-After research completes, remember for this conversation:
-- **MODE**: {mode}
-- **TOPIC**: {topic}
-- **KEY FINDINGS**: Top 3-5 insights
-- **SOURCES**: The URLs and quotes you found
+After research, remember:
+- `MODE`: {mode}
+- `TOPIC`: {topic}  
+- `KEY_FINDINGS`: Top 3-5 insights
+- `SOURCES`: URLs you found
 
-**You are now an EXPERT on this topic.**
+**You are now an expert on this topic.**
 
-For follow-up questions:
+For follow-ups:
 - Answer from your research (don't re-search)
 - Cite the sources you found
 - Offer to dive deeper on any finding
 
-Only do new research if user asks about a DIFFERENT topic.
+Only new research if user asks about DIFFERENT topic.
 
 ---
 
-## Examples
+## Anti-Patterns to Avoid
 
-**User:** `/intel gaps "AI video editing"`
+❌ **Don't hallucinate sources** — If you didn't find it, don't cite it
+❌ **Don't use vague numbers** — "Several" "Many" "Some" → Use actual counts
+❌ **Don't skip the format** — Follow templates exactly
+❌ **Don't over-promise** — Low data = say "low confidence"
+❌ **Don't re-search on follow-ups** — Use what you already found
 
-**User:** `/intel competitors Notion`
+---
 
-**User:** `/intel sentiment "Claude Code"`
+## Reference Examples
 
-**User:** `/intel pricing "email marketing SaaS"`
+See the `examples/` folder for complete output examples:
+- `examples/gaps-example.md` — AI video editing gaps analysis
+- `examples/competitors-example.md` — Notion competitive landscape  
+- `examples/sentiment-example.md` — Claude Code sentiment analysis
 
-**User:** `/intel trends "no-code tools"`
-
-**User:** `/intel pain "project management"`
-
-**User:** `/intel full "personal finance apps"`
+Use these as templates for consistent output formatting.
 
 ---
 
