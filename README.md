@@ -167,5 +167,5 @@ Ideas for contribution:
 ## Also By @unisone
 
 - [claude-learner](https://github.com/unisone/claude-learner) — Auto-generate CLAUDE.md improvements from session analysis
-- [moltbot-config](https://github.com/unisone/moltbot-config) — Production memory engine, self-review system, and configs for Moltbot
+- [openclaw-config](https://github.com/unisone/openclaw-config) — Battle-tested configs, memory scripts, and workspace templates for OpenClaw / Moltbot
 - [agentpulse](https://github.com/unisone/agentpulse) — Real-time agent monitoring dashboard
