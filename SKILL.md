@@ -3,7 +3,6 @@ name: intel
 description: Market intelligence in seconds. Research gaps, competitors, sentiment, pricing, trends, and pain points for any market or product. For builders who need business decisions, not just information.
 argument-hint: "[mode] [topic]" — modes: gaps, competitors, sentiment, pricing, trends, pain, full
 context: fork
-agent: Explore
 disable-model-invocation: true
 allowed-tools: WebSearch, Read, Write, AskUserQuestion
 license: MIT
@@ -454,4 +453,5 @@ Use these as templates for consistent output formatting.
 ---
 
 **/intel** — Stop guessing. Start knowing.
+
 
