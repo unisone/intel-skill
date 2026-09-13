@@ -1,0 +1,11 @@
+{
+  "name": "intel-skill",
+  "version": "1.0.0",
+  "description": "Market intelligence in seconds: gaps, competitors, sentiment, pricing, trends, and pain points for any market or product. No API keys required.",
+  "author": {
+    "name": "unisone",
+    "url": "https://github.com/unisone"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/unisone/intel-skill"
+}

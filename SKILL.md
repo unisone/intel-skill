@@ -6,6 +6,9 @@ context: fork
 agent: Explore
 disable-model-invocation: true
 allowed-tools: WebSearch, Read, Write, AskUserQuestion
+license: MIT
+metadata:
+  author: unisone
 ---
 
 # /intel — Market Intelligence in Seconds
@@ -451,3 +454,4 @@ Use these as templates for consistent output formatting.
 ---
 
 **/intel** — Stop guessing. Start knowing.
+
